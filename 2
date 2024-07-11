@@ -1,0 +1,13 @@
+clc
+clear
+x=[5 10 15 20 25]
+y=[16 19 23 26 30]
+n = length(x)
+syms a b
+eq1=a*sum(x)+n*b==sum(y)
+eq2=a*sum(x.*x)+b*sum(x)==sum(x.*y)
+[A,B]= equationsToMatrix ([eq1 eq2], [a,b])
+X=linsolve (A,B)
+a=double(X(1))
+b=double(X(2))
+fprintf('the curve fitting is given by Y=%f*x+%f',a,b)
