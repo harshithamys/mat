@@ -1,0 +1,11 @@
+clc
+clear x=[1 2 3 4 5]
+y=[0.5 2 4.5 8 12.5] 
+n = length(x) X=log(x);
+Y=log(y);
+syms a1 b1 eq1=n*a1+b1*sum(X)==sum(Y)
+
+eq2=a1*sum(X)+b1*sum(X.*X)==sum(X.*Y)
+[A,B] equationsToMatrix ([eq1 eq2], [a1,b1])
+X=linsolve (A, B) a1-double(X(1)) b1=double(X(2)) a=exp(a1) b= b1 
+fprintf('the curve fitting is given by Y=%f*x^(%f)',a,b)
